@@ -134,12 +134,12 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
         <?php
         try {
             $connection = ConnectionManager::get('default');
-            $connected = $connection->connect();
+            $connected = $connection->config();
         } catch (Exception $connectionError) {
             $connected = false;
             $errorMsg = $connectionError->getMessage();
             if (method_exists($connectionError, 'getAttributes')) :
-                $attributes = $connectionError->getAttributes();
+                $attributes = $connectionError->getMessage();
                 if (isset($errorMsg['message'])) :
                     $errorMsg .= '<br />' . $attributes['message'];
                 endif;
